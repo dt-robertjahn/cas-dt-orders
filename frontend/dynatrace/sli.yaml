@@ -1,0 +1,8 @@
+spec_version: 0.1.4
+indicators:
+  svc_fr: metricSelector=builtin:service.errors.server.rate:merge("dt.entity.service"):avg:names&entitySelector=type(SERVICE),tag("service:frontend")
+  svc_rt_p50: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(50.000000):names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
+  svc_rt_p90: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(90.000000):names&entitySelector=type(SERVICE),tag("service:frontend")
+  svc_rt_p95: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(95.000000):names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders"),tag("stage:staging")
+  svc_tp_min: metricSelector=builtin:service.requestCount.total:merge("dt.entity.service"):value:names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
+  svc2svc_calls: metricSelector=builtin:service.nonDbChildCallCount:merge("dt.entity.service"):value:names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
