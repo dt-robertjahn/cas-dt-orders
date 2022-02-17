@@ -1,9 +1,11 @@
 spec_version: 0.1.4
 indicators:
-  DT-Orders_staging_Error_Rate: SLO;a97739a4-9ce0-3c48-bfb6-f527a17b154d
-  svc_fr: metricSelector=builtin:service.errors.server.rate:merge("dt.entity.service"):avg:names&entitySelector=type(SERVICE),tag("service:frontend")
-  svc_rt_p50: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(50.000000):names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
-  svc_rt_p90: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(90.000000):names&entitySelector=type(SERVICE),tag("service:frontend")
-  svc_rt_p95: MV2;MicroSecond;metricSelector=builtin:service.response.time:merge("dt.entity.service"):percentile(95.000000):names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders"),tag("stage:staging")
-  svc_tp_min: metricSelector=builtin:service.requestCount.total:merge("dt.entity.service"):value:names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
-  svc2svc_calls: metricSelector=builtin:service.nonDbChildCallCount:merge("dt.entity.service"):value:names&entitySelector=type(SERVICE),tag("service:frontend"),tag("project:dt-orders")
+  error_rate: metricSelector=builtin:service.errors.server.rate:splitBy():avg:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  proc_count: metricSelector=builtin:tech.generic.processCount:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  process_cpu: metricSelector=builtin:tech.generic.cpu.usage:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  process_memory: MV2;Byte;metricSelector=builtin:tech.generic.mem.workingSetSize:splitBy():avg:names&entitySelector=type(PROCESS_GROUP_INSTANCE),mzId(-2120541599153649783)
+  response_time_p50: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(50.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  response_time_p90: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(90.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  response_time_p95: MV2;MicroSecond;metricSelector=builtin:service.response.time:splitBy():percentile(95.000000):names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  svc_tp_min: metricSelector=builtin:service.requestCount.total:splitBy():value:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
+  svc2svc_calls: metricSelector=builtin:service.nonDbChildCallCount:splitBy():value:names&entitySelector=type(SERVICE),mzId(-2120541599153649783)
